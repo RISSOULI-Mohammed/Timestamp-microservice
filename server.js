@@ -41,14 +41,10 @@ app.route('/')
 app.route('/:time')
     .get(function(req, res) {
   var time = req.params.time;
-  var date;
-  if(parseInt(time).toString == time){
-    date = new Date(parseInt(time)*100);
+  var date = new Date(time);
+  if (date == "Invalid Date"){
+    date = Date.now();
   }
-  else {
-    date = new Date(time);
-  }
-  
       res.end(date.toString());
     })
 
