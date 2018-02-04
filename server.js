@@ -46,9 +46,11 @@ app.route('/:time')
     date = new Date(time*1000);
   }
   
-  var months = ["January", "February", "March", "April", "May", "June", "july", "August", "Septemb]
-  var natural = date.getMonth() + " " + date.getDate() + ", " + date.getYear()
-      res.end(natural);
+  var months = ["January", "February", "March", "April", "May", "June", "july", "August", "September", "October", "November", "December"];
+  var natural = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+  var unix = date.getTime()/1000 + "";
+  var response = {"unix": unix, "natural": natural};
+      res.end(JSON.stringify(response));
     })
 
 // Respond not found to all the wrong routes
