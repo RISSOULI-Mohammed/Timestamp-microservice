@@ -48,7 +48,7 @@ app.route('/:time')
   
   var months = ["January", "February", "March", "April", "May", "June", "july", "August", "September", "October", "November", "December"];
   var natural = months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-  var unix = date.getTime()/1000 + "";
+  var unix = date.getTime()/1000;
   var response = {"unix": unix, "natural": natural};
       res.end(JSON.stringify(response));
     })
