@@ -41,7 +41,14 @@ app.route('/')
 app.route('/:time')
     .get(function(req, res) {
   var time = req.params.time;
-  var date = new Date(time);
+  var date;
+  if(parseInt(time).toString == time){
+    date = new Date(parseInt(time)*100);
+  }
+  else {
+    date = new Date(time);
+  }
+  
       res.end(date.toString());
     })
 
