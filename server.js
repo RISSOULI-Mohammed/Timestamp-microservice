@@ -40,7 +40,8 @@ app.route('/')
 
 app.route('/:time')
     .get(function(req, res) {
-    var date = new Date(req.params.time);
+  var time = req.params.time;
+  var date = new Date(time);
       res.end(date.toString());
     })
 
