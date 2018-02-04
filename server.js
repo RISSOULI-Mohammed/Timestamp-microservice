@@ -9,6 +9,9 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
+var bodyparser = require('body-parser');
+var jsonParser = bodyparser.json();
+
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
     var allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
@@ -34,8 +37,10 @@ app.route('/_api/package.json')
   });
   
 app.route('/')
-    .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/index.html');
+    .get(jsonParser, function(req, res) {
+      console.log();
+      res.end(JSON.stringify(req.body));
+		  //res.sendFile(process.cwd() + '/views/index.html');
     })
 
 // Respond not found to all the wrong routes
