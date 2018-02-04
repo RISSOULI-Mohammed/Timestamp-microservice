@@ -43,9 +43,12 @@ app.route('/:time')
   var time = req.params.time;
   var date = new Date(time);
   if (date == "Invalid Date"){
-    date = Date.now();
+    date = new Date(time*1000);
   }
-      res.end(date.toString());
+  
+  var months = ["January", "February", "March", "April", "May", "June", "july", "August", "Septemb]
+  var natural = date.getMonth() + " " + date.getDate() + ", " + date.getYear()
+      res.end(natural);
     })
 
 // Respond not found to all the wrong routes
